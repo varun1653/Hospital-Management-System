@@ -1,0 +1,107 @@
+{% extends "patient/template.html" %} {% block title %}
+<title>Billing Status</title>
+{% endblock title %} {% block style %} {% endblock style %} {% block content %}
+
+<style>
+    .tb {
+        background-color: #0cb8b6;
+        /* color: white */
+    }
+    
+    th {
+        color: black;
+        font-weight: 500;
+    }
+    
+    .btn {
+        background: #0cb8b6;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <form method="post">
+        {% csrf_token %}
+        <div class="container">
+            <h3 align="center"> Pending bills </h3>
+            <div class="col-md-3">
+                <input type="text" id="input1" onkeyup="myFunction('input1','pending_table')" placeholder="Search Patient Id" title="Type in patient id" class="form-control">
+            </div>
+            <br>
+            <table id="pending_table" class="table table-striped">
+                <tr class="tb">
+                    <th>Appointment Id</th>
+                    <th>Visit No</th>
+                    <th>Patient Name</th>
+                    <th>View Bills</th>
+                    <th>Total Amount</th>
+                    <th>Amount Paid</th>
+                    <th>Status</th>
+                </tr>
+                {%for bill in HospitalBills %} {%if bill.AmountPaid < bill.TotalBill%} <tr>
+                    <td>{{bill.Appointment.id}}</td>
+                    <td>{{bill.Appointment.VisitNo}}</td>
+                    <td>{{bill.Appointment.Patient.FirstName}} {{bill.Appointment.Patient.LastName}}</td>
+                    <td><button name="appid" class="btn" type="submit" value="{{bill.Appointment.id}}">View/Update</button></td>
+                    <td>{{bill.TotalBill}}</td>
+                    <td>{{bill.AmountPaid}}</td>
+                    <td>Pending</td>
+                    </tr>
+                    {%endif%} {%endfor%}
+
+            </table>
+        </div>
+        <div class="container">
+            <h3 align="center"> Paid bills </h3>
+            <div class="col-md-3">
+                <input type="text" id="input2" onkeyup="myFunction('input2','paid_table')" placeholder="Search Patient Id" title="Type in patient id" class="form-control">
+            </div>
+            <br>
+            <table id="paid_table" class="table table-striped">
+                <tr class="tb">
+                    <th>Appointment Id</th>
+                    <th>Visit No</th>
+                    <th>Patient Name</th>
+                    <th>View Bills</th>
+                    <th>Total Amount</th>
+                    <th>Amount Paid</th>
+                    <th>Paid on</th>
+                    <th>Status</th>
+                </tr>
+                {%for bill in HospitalBills %} {%if bill.AmountPaid == bill.TotalBill%}
+                <tr>
+                    <td>{{bill.Appointment.id}}</td>
+                    <td>{{bill.Appointment.VisitNo}}</td>
+                    <td>{{bill.Appointment.Patient.FirstName}} {{bill.Appointment.Patient.LastName}}</td>
+                    <td><button name="appid" class="btn" type="submit" value="{{bill.Appointment.id}}">View</button></td>
+                    <td>{{bill.TotalBill}}</td>
+                    <td>{{bill.AmountPaid}}</td>
+                    <td>{{bill.FullyPaidDate}}</td>
+                    <td>Paid</td>
+                </tr>
+                {%endif%} {%endfor%}
+
+            </table>
+        </div>
+    </form>
+    <script>
+        function myFunction(inputid, tableid) {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById(inputid);
+            filter = input.value.toUpperCase();
+            table = document.getElementById(tableid);
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    {% endblock content %}

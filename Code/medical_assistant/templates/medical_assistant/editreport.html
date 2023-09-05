@@ -1,0 +1,137 @@
+{% extends "patient/template.html" %} {% block title %}
+<title>All Patient Details</title>
+
+{% endblock title %} {% block content %}
+<style>
+    .tb {
+        background-color: #0cb8b6;
+        /* color: white */
+    }
+    
+    th {
+        color: black;
+        font-weight: 500;
+    }
+    
+    .btn {
+        background: #0cb8b6;
+        color: #fff;
+    }
+</style>
+<form class="" enctype="multipart/form-data" action="" autocomplete="off" method="post">
+    {% csrf_token %}
+    <!-- send the current appointment obj(i.e on which it is clicked) to this page -->
+    <div class="container">
+        {% if medicalreport.report %}
+        <br>
+        <div class="text-center">
+            <a href="{% url 'mr' %}{{appointment.id}}" target="_blank" class="btn" style="text-decoration: none;"> Medical Report </a>
+        </div>
+        <br>
+        <h3 align="center">RE-UPLOAD REPORTS</h3><br>
+        <input id="re-files" type="file" class="file" name="files" data-preview-file-type="docx"> {% else %}
+        <h3 align="center">UPLOAD REPORTS</h3><br>
+        <input id="files" type="file" class="file" name="files" data-preview-file-type="docx"> {% endif %}
+    </div>
+    <br>
+    <h3 align="center">WARD DETAILS</h3>
+    {% if warddetails %}
+    <div class="container">
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+
+                <tr class="tb">
+                    <th scope="col">WARD</th>
+                    <th scope="col">BED NUMBER</th>
+                    <th scope="col">ADMITTED ON</th>
+                </tr>
+
+                <tr>
+                    <td>{{warddetails.Ward.WardType}}</td>
+                    <td>{{warddetails.BedNo}}</td>
+                    <td>{{warddetails.JoinedDate}}</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div class="container">
+        <h4 align="center">NOT IN ANY WARD. WANT TO ASSIGN WARD?</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="type" class="form-label">CHOOSE A WARD</label>
+                <input align="center" list="list1" name="wardtype" id="type" class="form-control">
+                <datalist id="list1">
+                <option value="None">None</option>
+                {% for w in ward %}
+                    <option value={{w.WardType}}>{{w.WardType}}</option>  
+                {%endfor%}
+            </datalist>
+            </div>
+            <div class="col-md-4">
+                <label for="wardreportDescription" class="form-label">Describtion for the ward clerk</label>
+                <textarea rows="1" cols="80" id="wardreportDescription" name="wardreportDescription" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <br><br>
+    <div class="container">
+        {% if labreport.labreport %}
+        <br>
+        <div class="text-center">
+            <a href="{% url 'dr' %}{{appointment.id}}" target="_blank" class="btn" style="text-decoration: none;"> Diagnosis Report </a> {% elif labreport %}
+        </div>
+        <br>
+        <h4 align="center"> The Patient is already appointed to Diagnosis. Reports are yet to come</h4>
+        <br> {% elif not labreport %}
+        <div class="row">
+            <div class="col-md-4">
+                <label for="type" class="form-label">LAB TEST</label>
+                <input list="list2" name="diagnosis" id="type" class="form-control">
+                <datalist id="list2">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </datalist>
+            </div>
+            <div class="col-md-4">
+                <label for="labreportDescription" class="form-label">Describtion for the Diagnosis</label>
+                <textarea rows="1" cols="80" id="labreportDescription" name="labreportDescription" class="form-control"></textarea>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <br><br>
+    <div class="container">
+        {% if appointment.status == "Unattended" %}
+        <div class="row">
+            <div class="col-md-4">
+                <label for="status" class="form-label">CHANGE STATUS</label>
+                <input list="list3" name="appointment_status" id="status" class="form-control">
+                <datalist id="list3">
+                        <option value="Unattended">Unattended</option>
+                        <option value="Open">Open</option>
+                    </datalist>
+            </div>
+
+            {% elif appointment.status == 'Open' %}
+            <div class="col-md-4">
+                <label for="status" class="form-label">CHANGE STATUS</label>
+                <input list="list4" name="appointment_status" id="status" class="form-control">
+                <datalist id="list4">
+                        <option value="Open">Open</option>
+                        <option value="Closed">Closed</option>
+                    </datalist>
+            </div>
+        </div>
+        {% endif %}
+        <br>
+        <div class="col-md-4">
+            <input type="submit" value="Submit" class="btn">
+        </div>
+
+    </div>
+</form>
+{% endblock content %}

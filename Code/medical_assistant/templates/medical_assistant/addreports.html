@@ -1,0 +1,276 @@
+
+{% extends "patient/template.html" %}
+{% block title %}
+    <title>Patient Appointments</title>
+{% endblock title %}
+{% block style %}
+<!-- #region -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    
+    <title>Appointment Details</title>
+    <style>
+        body {
+            /* Write your font below: */
+            font-family: "Courgette", cursive;
+            background-color: rgb(250, 240, 207);
+        }
+
+        .status-change-btn {
+            margin-top: 1%;
+            margin-left: 42%;
+            padding: 1rem;
+            background-color: rgb(2, 170, 2);
+            color: rgb(248, 243, 225);
+            border-radius: 2px;
+            border: 0px;
+        }
+        
+        p {
+            font-size: 1.5rem;
+        }
+        
+        .padding {
+            padding: 3rem !important
+        }
+        
+        .user-card-full {
+            overflow: hidden
+        }
+        
+        .card {
+            border-radius: 5px;
+            -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+            box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+            border: none;
+            margin-bottom: 30px;
+            width: 800px
+        }
+        
+        .m-r-0 {
+            margin-right: 0px
+        }
+        
+        .m-l-0 {
+            margin-left: 0px
+        }
+        
+        .user-card-full .user-profile {
+            border-radius: 5px 0 0 5px
+        }
+        
+        .bg-c-lite-green {
+            background: rgb(85, 56, 2)
+        }
+        
+        .user-profile {
+            padding: 20px 0
+        }
+        
+        .card-block {
+            padding: 1.25rem
+        }
+        
+        .m-b-25 {
+            margin-bottom: 25px
+        }
+        
+        .img-radius {
+            border-radius: 5px
+        }
+        
+        h6 {
+            font-size: 14px
+        }
+        
+        .card .card-block p {
+            line-height: 25px
+        }
+        
+        @media only screen and (min-width: 1400px) {
+            p {
+                font-size: 20px
+            }
+        }
+        
+        .card-block {
+            padding: 1.25rem;
+        }
+        
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0
+        }
+        
+        .m-b-20 {
+            margin-bottom: 30px
+        }
+        
+        .p-b-5 {
+            padding-bottom: 5px !important
+        }
+        
+        .card .card-block p {
+            line-height: 30px
+        }
+        
+        .m-b-10 {
+            margin-bottom: 10px
+        }
+        
+        .text-muted {
+            color: #919aa3 !important
+        }
+        
+        .b-b-default {
+            border-bottom: 1px solid #e0e0e0
+        }
+        
+        .f-w-600 {
+            font-weight: 600
+        }
+        
+        .m-b-20 {
+            margin-bottom: 20px
+        }
+        
+        .m-t-40 {
+            margin-top: 20px
+        }
+        
+        .p-b-5 {
+            padding-bottom: 5px !important
+        }
+        
+        .m-b-10 {
+            margin-bottom: 10px
+        }
+        
+        .m-t-40 {
+            margin-top: 20px
+        }
+        
+        .user-card-full .social-link li {
+            display: inline-block
+        }
+        
+        .user-card-full .social-link li a {
+            font-size: 20px;
+            margin: 0 10px 0 0;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out
+        }
+    </style>
+<!-- #endregion -->
+{% endblock style %}
+{% block content %}
+    <section class="section-hero">
+        <div class="page-content page-container" id="page-content">
+            <div style="margin-left: -5%;" class="padding">
+                <h1 style="margin-left: 45%; margin-bottom: 2rem; color: rgb(73, 41, 0);">Patient Information</h1>
+                <div class="row container d-flex justify-content-center">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card user-card-full">
+                            <div class="row m-l-0 m-r-0">
+                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                    <div class="card-block text-center text-white">
+                                        <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
+                                        <h3 class="f-w-600">Patient Id: {{appointment.Patient.PatientID}}</h3>
+                                        <h3 class="f-w-600">Appointment Id: {{appointment.AppointmentID}}</h3>
+                                        <h3 class="f-w-600">Assigned Doctor: {{appointment.Doctor.FirstName}} {{appointment.Doctor.LastName}}</h3>
+                                        <!-- <p></p> <a href="/update_profile" class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16" style="color:rgb(255, 255, 255)"><i >Change Address</i></a> -->
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="card-block">
+                                        <h4 class="m-b-20 p-b-5 b-b-default f-w-600">Personal Information</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">First Name</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.FirstName}}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Last Name</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.LastName}}</h6><br>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Age</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.Age}}</h6><br>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Gender</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.gender}}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Height</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.Height}}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Weight</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.Weight}}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Blood Group</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.BloodGroup}}</h6>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-10 f-w-600">Address</p>
+                                                    <h6 class="text-muted f-w-400">{{appointment.Patient.PermantAddress}}</h6>
+                                                </div>
+                                            </div>
+                                            <h4 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Contact Information</h6>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <p class="m-b-10 f-w-600">Mobile Number</p>
+                                                        <h6 class="text-muted f-w-400">{{appointment.Patient.contact}}</h6>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <p class="m-b-10 f-w-600">Email</p>
+                                                        <h6 class="text-muted f-w-400">{{appointment.Patient.EmailAddress}}</h6>
+                                                    </div>
+                                                </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h1 style="margin-left: 40%; margin-bottom: 2rem; color: rgb(73, 41, 0);">Visit Details and Reports</h1>
+        <div class="container-fluid">
+            <div class="row" style=" color: rgb(104, 63, 9); width: 80%; margin-left: 20%;">
+                <div style="font-weight: 800; width: 10%; font-size: 1.75rem">Visit Number</div>
+                <div style="font-weight: 800; width: 20%; font-size: 1.75rem">Date Time</div>
+                <div style="font-weight: 800; width: 20%; font-size: 1.75rem">Status</div>
+                <div style="font-weight: 800; width: 20%; font-size: 1.75rem">Medical Reports</div>
+                <div style="font-weight: 800; width: 20%; font-size: 1.75rem">Diagnosis Reports</div>
+            </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default" style="background-color: rgb(255, 251, 236);; color: rgb(73, 41, 0); width: 80%; margin-left: 20%;">
+                    <div class="panel-heading" style="background-color: rgb(133, 75, 1); color: rgb(248, 243, 225);">
+                        {% for visit in appointmentVisists %}
+                        <h4 class="panel-title" style="background-color: rgb(133, 75, 1); color: rgb(253, 248, 229);">
+                            <div class="row">
+                                <div style="width: 10%;">{{visit.VisitNo}}</div>
+                                <div style="width: 20%;">{{visit.datetime}}</div>
+                                <div style="width: 20%;">{{visit.status}}</div>
+                                {% if visit.id in look %}
+                                    <div style="width: 20%;"><a href="{% url 'mr' %}{{appointment.id}}" target="_blank"  style="text-decoration: none;"> Medical Report </a></div>
+                                {% else %}
+                                    <div style="width: 20%;">NA</div>
+                                {% endif %}
+                                {% if visit.id in book%}
+                                    <div style="width: 20%;"><a href="{% url 'dr' %}{{appointment.id}}" target="_blank"  style="text-decoration: none;"> Diagnosis Report </a></div>
+                                {% else %}
+                                    <div style="width: 20%;">NA</div>
+                                {% endif %}
+                        </h4>
+                        {% endfor %}
+                    </div>
+            </div>
+    </section>
+
+{% endblock content %}

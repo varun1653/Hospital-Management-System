@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
+    <style>
+        .tb {
+            background-color: #0cb8b6;
+            /* color: white */
+        }
+        
+        th {
+            color: black;
+            font-weight: 500;
+        }
+        
+        .btn {
+            background: #0cb8b6;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <br>
+    <h4 align="center">REGISTER NEW STAFF MEMBERS</h4><br>
+    <div class="container">
+        <form action="" method="post" class="row g-4">
+            {% csrf_token %}
+            <div class="col-md-3">
+                <select name="staffCategory" id="selectCategory" class="form-select" data-live-search="true" required>
+                    <option value="" >Please choose one option:</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="MedicalAssistant">Medical Assistant</option>
+                    <option value="Biller">Biller</option>
+                    <option value="Diagnostician">Diagnostician</option>
+                    <option value="Receptionist">Receptionist</option>
+                    <option value="PharmacyTechnician">Pharmacy Technician</option>
+                    <option value="WardClerk">Ward Clerk</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn" type="submit">Register a new staff member</button>
+            </div>
+        </form>
+    </div>
+    <br><br>
+    <div class="container">
+        <h3 align="center">REGISTERED PATIENTS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">PatientID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                </tr>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{patient.PatientID}}</td>
+                    <td>{{patient.FirstName}}</td>
+                    <td>{{patient.LastName}}</td>
+                    <td>{{patient.Age}}</td>
+                    <td>{{patient.gender}}</td>
+                    <td>{{patient.contact}}</td>
+                    <td>{{patient.BloodGroup}}</td>
+                    <td>{{patient.EmailAddress}}</td>
+                    <td>{{patient.PermantAddress}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3 align="center">DOCTORS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">DoctorID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Blood Group</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Contact</th>
+                </tr>
+                {% for doctor in doctors %}
+                <tr>
+                    <td>{{doctor.DoctorID}}</td>
+                    <td>{{doctor.FirstName}}</td>
+                    <td>{{doctor.LastName}}</td>
+                    <td>{{doctor.EmailAddress}}</td>
+                    <td>{{doctor.PermantAddress}}</td>
+                    <td>{{doctor.Age}}</td>
+                    <td>{{doctor.Salary}}</td>
+                    <td>{{doctor.Shift}}</td>
+                    <td>{{doctor.BloodGroup}}</td>
+                    <td>{{doctor.Department}}</td>
+                    <td>{{doctor.status}}</td>
+                    <td>{{doctor.contact}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3 align="center">MEDICAL ASSITANTS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">MedicalAssistantID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Works under</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Blood Group</th>
+                </tr>
+                {% for medAssist in medicalAssistants %}
+                <tr>
+                    <td>{{medAssist.MedicalAssistantID}}</td>
+                    <td>{{medAssist.FirstName}}</td>
+                    <td>{{medAssist.LastName}}</td>
+                    <td>{{medAssist.underDoctor.FirstName}}</td>
+                    <td>{{medAssist.EmailAddress}}</td>
+                    <td>{{medAssist.PermantAddress}}</td>
+                    <td>{{medAssist.Age}}</td>
+                    <td>{{medAssist.Salary}}</td>
+                    <td>{{medAssist.Shift}}</td>
+                    <td>{{medAssist.BloodGroup}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3 align="center">BILLER</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">BillerID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Blood Group</th>
+                </tr>
+                {% for biller in billers %}
+                <tr>
+                    <td>{{biller.BillerID}}</td>
+                    <td>{{biller.FirstName}}</td>
+                    <td>{{biller.LastName}}</td>
+                    <td>{{biller.EmailAddress}}</td>
+                    <td>{{biller.PermantAddress}}</td>
+                    <td>{{biller.Age}}</td>
+                    <td>{{biller.Salary}}</td>
+                    <td>{{biller.Shift}}</td>
+                    <td>{{biller.BloodGroup}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+
+        <h3 align="center">DIAGNOSTICIANS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">DiagnosticianID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Blood Group</th>
+                </tr>
+                {% for diagnostician in diagnosticians %}
+                <tr>
+                    <td>{{diagnostician.DiagnosticianID}}</td>
+                    <td>{{diagnostician.FirstName}}</td>
+                    <td>{{diagnostician.LastName}}</td>
+                    <td>{{diagnostician.EmailAddress}}</td>
+                    <td>{{diagnostician.PermantAddress}}</td>
+                    <td>{{diagnostician.Age}}</td>
+                    <td>{{diagnostician.Salary}}</td>
+                    <td>{{diagnostician.Shift}}</td>
+                    <td>{{diagnostician.BloodGroup}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3 align="center">RECEPTIONISTS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">ReceptionistID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Blood Group</th>
+                </tr>
+                {% for receptionist in receptionists %}
+                <tr>
+                    <td>{{receptionist.ReceptionistID}}</td>
+                    <td>{{receptionist.FirstName}}</td>
+                    <td>{{receptionist.LastName}}</td>
+                    <td>{{receptionist.EmailAddress}}</td>
+                    <td>{{receptionist.PermantAddress}}</td>
+                    <td>{{receptionist.Age}}</td>
+                    <td>{{receptionist.Salary}}</td>
+                    <td>{{receptionist.Shift}}</td>
+                    <td>{{receptionist.BloodGroup}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3 align="center">PHARMACY TECHNICIONS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">PharmacyTechnicianID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Blood Group</th>
+                </tr>
+                {% for phTech in pharmacyTechnicians %}
+                <tr>
+                    <td>{{phTech.PharmacyTechnicianID}}</td>
+                    <td>{{phTech.FirstName}}</td>
+                    <td>{{phTech.LastName}}</td>
+                    <td>{{phTech.EmailAddress}}</td>
+                    <td>{{phTech.PermantAddress}}</td>
+                    <td>{{phTech.Age}}</td>
+                    <td>{{phTech.Salary}}</td>
+                    <td>{{phTech.Shift}}</td>
+                    <td>{{phTech.BloodGroup}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h3 align="center">WARD CLERK</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">WardClerkID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Ward</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Blood Group</th>
+                </tr>
+                {% for wardClerk in wardClerks %}
+                <tr>
+                    <td>{{wardClerk.WardClerkID}}</td>
+                    <td>{{wardClerk.FirstName}}</td>
+                    <td>{{wardClerk.LastName}}</td>
+                    <td>{{wardClerk.Ward}}</td>
+                    <td>{{wardClerk.EmailAddress}}</td>
+                    <td>{{wardClerk.PermantAddress}}</td>
+                    <td>{{wardClerk.Age}}</td>
+                    <td>{{wardClerk.Salary}}</td>
+                    <td>{{wardClerk.Shift}}</td>
+                    <td>{{wardClerk.Contact}}</td>
+                    <td>{{wardClerk.BloodGroup}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+
+
+</html>

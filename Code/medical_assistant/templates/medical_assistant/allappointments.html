@@ -1,0 +1,121 @@
+{% extends "patient/template.html" %} {% block title %}
+<title>All Appointments</title>
+{% endblock title %} 
+{% block style %} {% endblock style %} 
+{% block content %}
+<style>
+    .tb {
+        background-color: #0cb8b6;
+        /* color: white */
+    }
+    
+    th {
+        color: black;
+        font-weight: 500;
+    }
+    .btn{
+        background-color: #0cb8b6;
+    }
+</style>
+
+<br>
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <br>
+        <h3 align="center">UPCOMING APPOINTMENTS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">AppointmentID</th>
+                    <th scope="col">Visit</th>
+                    <th scope="col">PatientId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">DoctorID</th>
+                    <th scope="col">DoctorName</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">viewdetails</th>
+                    <th scope="col">edit </th>
+                </tr>
+                {%for appointment in appointments%} {%if appointment.status == 'Unattended'%}
+                <tr>
+                    <td>{{appointment.AppointmentID}}</td>
+                    <td>{{appointment.VisitNo}}</td>
+                    <td>{{appointment.Patient.PatientID}}</td>
+                    <td>{{appointment.Patient.FirstName}} {{appointment.Patient.LastName}}</td>
+                    <td>{{appointment.Doctor.DoctorID}}</td>
+                    <td>{{appointment.Doctor.FirstName}} {{appointment.Doctor.LastName}}</div>
+        <td>{{appointment.status}}</td>
+        <!-- <td><a class="btn btn-primary" href="">View Details</a></td> -->
+        <td><button type="submit" name="viewdetails" value={{appointment.AppointmentID}} class="btn">View Details</button></td>
+        <td><button type="submit" name="edit" value={{appointment.id}} class="btn >edit</button></td class="btn">edit</button>
+        </td>
+        </tr>
+        {%endif%} {%endfor%}
+        </table>
+    </div>
+    </div>
+    </body>
+    <br>
+    <div class="container"><br>
+        <h3 align="center">OPEN APPOINTMENTS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">AppointmentID</th>
+                    <th scope="col">Visit</th>
+                    <th scope="col">PatientId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">DoctorID</th>
+                    <th scope="col">DoctorName</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">viewdetails</th>
+                    <th scope="col">edit</th>
+                </tr>
+                {%for appointment in appointments%} {%if appointment.status == 'Open'%}
+                <tr>
+                    <td>{{appointment.AppointmentID}}</td>
+                    <td>{{appointment.VisitNo}}</td>
+                    <td>{{appointment.Patient.PatientID}}</td>
+                    <td>{{appointment.Patient.FirstName}} {{appointment.Patient.LastName}}</td>
+                    <td>{{appointment.Doctor.DoctorID}}</td>
+                    <td>{{appointment.Doctor.FirstName}} {{appointment.Doctor.LastName}}</div>
+        <td>{{appointment.status}}</td>
+        <td><button type="submit" name="viewdetails" value={{appointment.AppointmentID}} class="btn ">View Details</button></td>
+        <td><button type="submit" name="edit" value={{appointment.id}} class="btn ">edit</button></td>
+        </tr>
+        {%endif%} {%endfor%}
+        </table>
+    </div>
+    </div>
+    <br>
+    <div class="container"><br>
+        <h3 align="center">CLOSED APPOINTMENTS</h3><br>
+        <div style="overflow-x:auto">
+            <table class="table table-striped">
+                <tr class="tb">
+                    <th scope="col">AppointmentID</th>
+                    <th scope="col">Visit</th>
+                    <th scope="col">PatientId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">DoctorID</th>
+                    <th scope="col">DoctorName</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+                {%for appointment in appointments%} {%if appointment.status == 'Closed'%}
+                <tr>
+                    <td>{{appointment.AppointmentID}}</td>
+                    <td>{{appointment.VisitNo}}</td>
+                    <td>{{appointment.Patient.PatientID}}</td>
+                    <td>{{appointment.Patient.FirstName}} {{appointment.Patient.LastName}}</td>
+                    <td>{{appointment.Doctor.DoctorID}}</td>
+                    <td>{{appointment.Doctor.FirstName}} {{appointment.Doctor.LastName}}</div>
+        <td>{{appointment.status}}</td>
+        <td><button type="submit" name="viewdetails" value={{appointment.AppointmentID}} class="btn ">View Details</button></td>
+        </tr>
+        {%endif%} {%endfor%}
+        </table>
+    </div>
+    </div>
+    {% endblock content %}

@@ -1,0 +1,340 @@
+{% extends "patient/template.html" %} {% block title %}
+<title>Appointment</title>
+{% endblock title %} {% block content %} {% if error %}
+<div class="alert alert-warning alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>error:</strong> {{error}}
+</div>
+{% endif %}
+<style>
+    .tb {
+        background-color: #0cb8b6;
+        /* color: white */
+    }
+    
+    th {
+        color: black;
+        font-weight: 500;
+    }
+    
+    body {
+        background-color: #efefef
+    }
+    
+    .content {
+        padding: 7rem 0;
+    }
+    
+    .form-control {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+        background: none;
+        font-size: medium;
+    }
+    
+    .form-control:active,
+    .form-control:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: #000;
+    }
+    
+    .col-form-label {
+        color: #000;
+        font-size: 13px;
+    }
+    
+    .btn,
+    .form-control,
+    .custom-select {
+        height: 45px;
+    }
+    
+    .custom-select:active,
+    .custom-select:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-color: #000;
+    }
+    
+    .btn {
+        border: none;
+        border-radius: 0;
+        font-size: 12px;
+        letter-spacing: .2rem;
+        text-transform: uppercase;
+    }
+    
+    .btn.btn-primary {
+        background: #0cb8b6;
+        color: #fff;
+        padding: 15px 20px;
+    }
+    
+    .btn:hover {
+        color: #fff;
+    }
+    
+    .btn:active,
+    .btn:focus {
+        outline: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    
+    .contact-wrap .col-form-label {
+        font-size: 14px;
+        color: #b3b3b3;
+        margin: 0 0 10px 0;
+        display: inline-block;
+        padding: 0;
+    }
+    
+    .contact-wrap .form,
+    .contact-wrap .contact-info {
+        padding: 40px;
+    }
+    
+    .contact-wrap .contact-info {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .contact-wrap .contact-info ul li {
+        margin-bottom: 15px;
+        color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .contact-wrap .contact-info ul li .wrap-icon {
+        font-size: 20px;
+        color: rgb(255, 255, 255);
+        margin-top: 5px;
+    }
+    
+    .contact-wrap .form {
+        background: #fff;
+    }
+    
+    .contact-wrap .form h3 {
+        color: #0cb8b6;
+        font-size: 20px;
+        margin-bottom: 30px;
+        font-weight: bold;
+    }
+    
+    .contact-wrap .contact-info {
+        height: 100vh;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    
+    .contact-wrap .contact-info a {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    
+    @media (max-width: 1199.98px) {
+        .contact-wrap .contact-info {
+            height: 400px !important;
+        }
+    }
+    
+    .contact-wrap .contact-info h3 {
+        color: #0cb8b6;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .container {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    h3 {
+        font-weight: bold;
+    }
+    
+    .form {
+        margin-left: 20%;
+        margin-right: -20%
+    }
+    
+    .btn-1 {
+        margin-left: 34%
+    }
+    
+    .btn-2 {
+        margin-left: 90%
+    }
+</style>
+<div class="content">
+
+    <div class="container">
+        <div class="row align-items-stretch no-gutters contact-wrap">
+            <div class="col-md-9">
+                <div class="form ">
+                    <div>
+                        <h3 align="center">SCHEDULE APPOINTMENT</h3><br>
+
+                        <button class="btn btn-primary btn-1" onclick="hideshow('app_form')">New appointment/ New Visit</button>
+                        <br><br>
+                        <form action="" method="POST" class="mb-5" autocomplete="off" id="app_form" style="display: none;">
+                            {% csrf_token %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="new" name="neworold" value="new" checked>
+                                <label class="form-check-label" for="new">New Appointment</label><br>
+                                <input class="form-check-input" type="radio" id="old" name="neworold" value="old">
+                                <label class="form-check-label" for="old">Old Appointment</label><br><br>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-5">
+                                    <label style="font-size:large" for="patientID">Patient ID</label>
+                                    <input class="form-control" id="patientID" type="number" name="patientID" placeholder="Patient ID" autocomplete="off" required />
+                                </div>
+                                <div class="col-md-6 form-group mb-5">
+                                    <label style="font-size:large" for="doctorID">Doctor ID</label>
+                                    <input class="form-control" id="doctorID" type="number" name="doctorID" placeholder="Doctor ID" autocomplete="off" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-5">
+                                    <label style="font-size:large" for="receptionistID">Recptionist ID</label>
+                                    <input class="form-control" id="receptionistID" type="number" placeholder="Receptionist ID" name="receptionistID" autocomplete="off" required />
+                                </div>
+                                <div class="col-md-6 form-group mb-5" id="appid" style="display: none">
+                                    <label style="font-size:large" for="appointmentID">Appointment ID</label>
+                                    <input class="form-control" id="appointmentID" type="number" name="appointmentID" placeholder="Appointment ID" autocomplete="off" />
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 form-group mb-5">
+                                    <input type="submit" value="submit" class="btn btn-primary btn-2">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div style="overflow-x:auto">
+                <h3 align="center">Yet to attend APPOINTMENTS</h3>
+                <table class="table table-striped">
+                    <tr class="tb">
+                        <th scope="col">AppointmentId</th>
+                        <th scope="col">PatientId</th>
+                        <th scope="col">PatientName</th>
+                        <th scope="col">DoctorId</th>
+                        <th scope="col">DoctorName</th>
+                        <th scope="col">Date</th>
+                    </tr>
+
+                    {%for app in appointment%} {%if app.status == 'Unattended'%}
+                    <tr>
+                        <td>{{app.AppointmentID}}</td>
+                        <td>{{app.Patient.PatientID}}</td>
+                        <td>{{app.Patient.FirstName}}</td>
+                        <td>{{app.Doctor.DoctorID}}</td>
+                        <td>{{app.Doctor.FirstName}}</td>
+                        <td>{{app.datetime}}</td>
+                    </tr>
+                    {%endif %} {%endfor%}
+
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div style="overflow-x:auto">
+                <h3 align="center">Open APPOINTMENTS</h3>
+                <table class="table table-striped">
+                    <tr class="tb">
+                        <th scope="col">AppointmentId</th>
+                        <th scope="col">PatientId</th>
+                        <th scope="col">PatientName</th>
+                        <th scope="col">DoctorId</th>
+                        <th scope="col">DoctorName</th>
+                        <th scope="col">Date</th>
+                    </tr>
+
+                    {%for app in appointment%} {%if app.status == 'Open'%}
+                    <tr>
+                        <tr>
+                            <td>{{app.AppointmentID}}</td>
+                            <td>{{app.Patient.PatientID}}</td>
+                            <td>{{app.Patient.FirstName}}</td>
+                            <td>{{app.Doctor.DoctorID}}</td>
+                            <td>{{app.Doctor.FirstName}}</td>
+                            <td>{{app.datetime}}</td>
+                        </tr>
+                    </tr>
+                    {%endif %} {%endfor%}
+
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div style="overflow-x:auto">
+                <h3 align="center">PAST APPOINTMENTS</h3>
+                <table class="table table-striped">
+                    <tr class="tb">
+                        <th scope="col">AppointmentId</th>
+                        <th scope="col">PatientId</th>
+                        <th scope="col">PatientName</th>
+                        <th scope="col">DoctorId</th>
+                        <th scope="col">DoctorName</th>
+                        <th scope="col">Date</th>
+                    </tr>
+
+                    {%for app in appointment%} {%if app.status == 'Closed'%}
+                    <tr>
+                        <tr>
+                            <td>{{app.AppointmentID}}</td>
+                            <td>{{app.Patient.PatientID}}</td>
+                            <td>{{app.Patient.FirstName}}</td>
+                            <td>{{app.Doctor.DoctorID}}</td>
+                            <td>{{app.Doctor.FirstName}}</td>
+                            <td>{{app.datetime}}</td>
+                        </tr>
+                    </tr>
+                    {%endif %} {%endfor%}
+
+                </table>
+            </div>
+        </div>
+
+        <script>
+            const nw = document.getElementById('new');
+            const old = document.getElementById('old');
+            const appid = document.getElementById('appid');
+            nw.addEventListener("click", () => {
+                if (nw.checked) {
+                    appid.style.display = 'none';
+                }
+            });
+            old.addEventListener("click", () => {
+                if (old.checked) {
+                    appid.style.display = 'block';
+                }
+            });
+
+            function hideshow(tableid) {
+                if (document.getElementById(tableid).style.display === "none")
+                    document.getElementById(tableid).style.display = "block";
+                else
+                    document.getElementById(tableid).style.display = "none";
+            }
+        </script>
+        {% endblock content %}

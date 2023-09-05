@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html class="supernova">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1" />
+    <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f7ed99c2c2c7240ba580251" />
+    <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.32149" />
+    <link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.32149" /> {% block title %}
+    <title>Patient Registration</title>
+    {% endblock title %}
+    <style type="text/css">
+        @media print {
+            .form-section {
+                display: inline!important
+            }
+            .form-pagebreak {
+                display: none!important
+            }
+            .form-section-closed {
+                height: auto!important
+            }
+            .page-section {
+                position: initial!important
+            }
+        }
+    </style>
+    {% block style %}
+    <style type="text/css" id="form-designer-style">
+        .form-all {
+            font-family: Inter, sans-serif;
+        }
+        
+        .form-all .qq-upload-button,
+        .form-all .form-submit-button,
+        .form-all .form-submit-reset,
+        .form-all .form-submit-print {
+            font-family: Inter, sans-serif;
+        }
+        
+        .form-all .form-pagebreak-back-container,
+        .form-all .form-pagebreak-next-container {
+            font-family: Inter, sans-serif;
+        }
+        
+        .form-header-group {
+            font-family: Inter, sans-serif;
+        }
+        
+        .form-label {
+            font-family: Inter, sans-serif;
+        }
+        
+        .form-label.form-label-auto {
+            display: block;
+            float: none;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .form-line {
+            margin-top: 12px 36px 12px 36px px;
+            margin-bottom: 12px 36px 12px 36px px;
+        }
+        
+        .form-all {
+            max-width: 752px;
+            width: 100%;
+        }
+        
+        .form-label.form-label-left,
+        .form-label.form-label-right,
+        .form-label.form-label-left.form-label-auto,
+        .form-label.form-label-right.form-label-auto {
+            width: 230px;
+        }
+        
+        .form-all {
+            font-size: 16px
+        }
+        
+        .form-all .qq-upload-button,
+        .form-all .qq-upload-button,
+        .form-all .form-submit-button,
+        .form-all .form-submit-reset,
+        .form-all .form-submit-print {
+            font-size: 16px
+        }
+        
+        .form-all .form-pagebreak-back-container,
+        .form-all .form-pagebreak-next-container {
+            font-size: 16px
+        }
+        
+        .supernova .form-all,
+        .form-all {
+            background-color: #fff;
+        }
+        
+        .form-all {
+            color: #2C3345;
+        }
+        
+        .form-header-group .form-header {
+            color: #2C3345;
+        }
+        
+        .form-header-group .form-subHeader {
+            color: #2C3345;
+        }
+        
+        .form-label-top,
+        .form-label-left,
+        .form-label-right,
+        .form-html,
+        .form-checkbox-item label,
+        .form-radio-item label {
+            color: #2C3345;
+        }
+        
+        .form-sub-label {
+            color: #464d5f;
+        }
+        
+        .supernova {
+            background-color: #ecedf3;
+        }
+        
+        .supernova body {
+            background: transparent;
+        }
+        
+        .form-textbox,
+        .form-textarea,
+        .form-dropdown,
+        .form-radio-other-input,
+        .form-checkbox-other-input,
+        .form-captcha input,
+        .form-spinner input {
+            background-color: #fff;
+        }
+        
+        .supernova {
+            background-image: none;
+        }
+        
+        #stage {
+            background-image: none;
+        }
+        
+        .form-all {
+            background-image: none;
+        }
+        
+        .ie-8 .form-all:before {
+            display: none;
+        }
+        
+        .ie-8 {
+            margin-top: auto;
+            margin-top: initial;
+        }
+    </style>
+    {% endblock style %}
+
+</head>
+
+<body>
+    {% block content %}
+    <form method="post" id="Pregistration" accept-charset="utf-8" autocomplete="off">
+        {% csrf_token %}
+        <div role="main" class="form-all">
+            <style>
+                .form-all:before {
+                    background: none;
+                }
+            </style>
+
+            <div style="display:table;width:100%">
+                <div class="form-header-group hasImage header-large" data-imagealign="Right">
+                    <div class="header-text httal htvam">
+                        <h1 id="header_1" class="form-header" data-component="header">
+                            New patient Registration
+                        </h1>
+                        <div id="subHeader_1" class="form-subHeader">
+                            Dr. Yusuf M.B.B.S F.R.C.S
+                        </div>
+                    </div>
+                    <div class="header-logo">
+                        <img src="https://www.jotform.com/uploads/utkuyildirim/form_files/dr.5f327cf9785fa8.05675056.5f48f8215276c2.83332452.png" alt="" width="200" class="header-logo-right" />
+                    </div>
+                </div>
+            </div>
+            <h4 align="center">CONTACT DETAILS</h4>
+            <li class="form-line" data-type="control_fullname" id="id_3">
+
+                <label class="form-label form-label-left" id="label_3" for="first_3"> Name </label>
+                <div id="cid_3" class="form-input" data-layout="full">
+                    <div data-wrapper-react="true">
+                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
+              <input type="text" id="fname" name="fname" class="form-textbox" data-defaultvalue="" autoComplete="section-input_3 given-name" size="10" value="" data-component="first" aria-labelledby="label_3 sublabel_3_first" />
+              <label class="form-sub-label" for="fname" id="sublabel_3_first" style="min-height:13px" aria-hidden="false"> First Name </label>
+            </span>
+                        <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
+              <input type="text" id="lname" name="lname" class="form-textbox" data-defaultvalue="" autoComplete="section-input_3 family-name" size="15" value="" data-component="last" aria-labelledby="label_3 sublabel_3_last" />
+              <label class="form-sub-label" for="lname" id="sublabel_3_last" style="min-height:13px" aria-hidden="false"> Last Name </label>
+            </span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="form-line" data-type="control_dropdown" id="id_231">
+                <label class="form-label form-label-left" id="label_231" for="gender"> Sex </label>
+                <div id="cid_231" class="form-input" data-layout="half">
+                    <select class="form-dropdown" id="gender" name="gender" style="width:310px" data-component="dropdown">
+            <option value=""> Please Select </option>
+            <option value="Male"> Male </option>
+            <option value="Female"> Female </option>
+            <option value="N/A"> N/A </option>
+          </select>
+                </div>
+            </li>
+            <li class="form-line" data-type="control_phone" id="id_5">
+                <label class="form-label form-label-left" id="label_5" for="Contact"> Contact Number: </label>
+                <div id="cid_5" class="form-input" data-layout="half">
+                    <span class="form-sub-label-container" style="vertical-align:top">
+            <input type="tel" id="Contact" name="Contact" data-type="mask-number" class="mask-phone-number form-textbox validate[Fill Mask]" data-defaultvalue="" autoComplete="section-input_5 tel-national" style="width:310px" data-masked="true" value="" placeholder="XXXXXXXXXX" data-component="phone" aria-labelledby="label_5" />
+            
+          </span>
+                </div>
+            </li>
+            <li class="form-line" data-type="control_email" id="id_225">
+                <label class="form-label form-label-left" id="label_225" for="Email"> E-mail </label>
+                <div id=" cid_225 " class="form-input " data-layout="half ">
+                    <span class="form-sub-label-container " style="vertical-align:top ">
+            <input type="email " id="Email " name="Email" class="form-textbox validate[Email] " data-defaultvalue=" " style="width:310px " size="310 " value=" " placeholder="ex: myname@example.com " data-component="email " aria-labelledby="label_225
+                    sublabel_input_225 " />
+            
+          </span>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_address " id="id_4 ">
+                <label class="form-label form-label-left " id="label_4 " for="input_4_addr_line1 "> Address: </label>
+                <div id="cid_4 " class="form-input " data-layout="full ">
+                    <div summary=" " class="form-address-table jsTest-addressField ">
+                        <div class="form-address-line-wrapper jsTest-address-line-wrapperField ">
+                            <span class="form-address-line form-address-street-line jsTest-address-lineField ">
+                <span class="form-sub-label-container " style="vertical-align:top ">
+                  <input type="text " id="Address-line1 " name="Address-line1" class="form-textbox form-address-line " data-defaultvalue=" " autoComplete="section-input_4 address-line1 " value=" " data-component="address_line_1 " aria-labelledby="label_4
+                    sublabel_4_addr_line1 " required=" " />
+                  <label class="form-sub-label " for="Address-line1 " id="sublabel_4_addr_line1 " style="min-height:13px " aria-hidden="false "> Street Address </label>
+                </span>
+                            </span>
+                        </div>
+                        <div class="form-address-line-wrapper jsTest-address-line-wrapperField ">
+                            <span class="form-address-line form-address-street-line jsTest-address-lineField ">
+                <span class="form-sub-label-container " style="vertical-align:top ">
+                  <input type="text " id="Address-line2" name="Address-line2" class="form-textbox form-address-line " data-defaultvalue=" " autoComplete="section-input_4 address-line2 " value=" " data-component="address_line_2 " aria-labelledby="label_4
+                    sublabel_4_addr_line2 " />
+                  <label class="form-sub-label " for="Address-line2 " id="sublabel_4_addr_line2 " style="min-height:13px " aria-hidden="false "> Street Address Line 2 </label>
+                </span>
+                            </span>
+                        </div>
+                        <div class="form-address-line-wrapper jsTest-address-line-wrapperField ">
+                            <span class="form-address-line form-address-city-line jsTest-address-lineField ">
+                <span class="form-sub-label-container " style="vertical-align:top ">
+                  <input type="text " id="city " name="city" class="form-textbox form-address-city " data-defaultvalue=" " autoComplete="section-input_4 address-level2 " value=" " data-component="city " aria-labelledby="label_4 sublabel_4_city
+                    " required=" " />
+                  <label class="form-sub-label " for="city " id="sublabel_4_city " style="min-height:13px " aria-hidden="false "> City </label>
+                </span>
+                            </span>
+                            <span class="form-address-line form-address-state-line jsTest-address-lineField ">
+                <span class="form-sub-label-container " style="vertical-align:top ">
+                  <input type="text " id="state " name="state" class="form-textbox form-address-state " data-defaultvalue=" " autoComplete="section-input_4 address-level1 " value=" " data-component="state " aria-labelledby="label_4 sublabel_4_state
+                    " required=" " />
+                  <label class="form-sub-label " for="state " id="sublabel_4_state " style="min-height:13px " aria-hidden="false "> State / Province </label>
+                </span>
+                            </span>
+                        </div>
+                        <div class="form-address-line-wrapper jsTest-address-line-wrapperField ">
+                            <span class="form-address-line form-address-zip-line jsTest-address-lineField ">
+                <span class="form-sub-label-container " style="vertical-align:top ">
+                  <input type="text " id="postal " name="postal" class="form-textbox form-address-postal " data-defaultvalue=" " autoComplete="section-input_4 postal-code " value=" " data-component="zip " aria-labelledby="label_4 sublabel_4_postal
+                    " required=" " />
+                  <label class="form-sub-label " for="postal " id="sublabel_4_postal " style="min-height:13px " aria-hidden="false "> Postal / Zip Code </label>
+                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="form-line " data-type="control_text " id="id_233 ">
+                <div id="cid_233 " class="form-input-wide " data-layout="full ">
+                    <div align="center " id="text_233 " class="form-html " data-component="text ">
+                        <h4>MEDICAL DETAILS</h4>
+                    </div>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_dropdown " id="id_231 ">
+                <label class="form-label form-label-left " id="label_231 " for="Blood_group "> Blood Group </label>
+                <div id="cid_231 " class="form-input " data-layout="half ">
+                    <select class="form-dropdown " id="Blood_group" name="Blood_group" style="width:310px " data-component="dropdown ">
+                        <option value=" "> Please Select </option>
+                        <option value="O postive">O+</option>
+                        <option value="O negative">O-</option>
+                        <option value="A postive">A+</option>
+                        <option value="A negative">A-</option>
+                        <option value="B postive">B+</option>
+                        <option value="B negative ">B-</option>
+                        <option value="AB postive">AB+</option>
+                        <option value="AB negative">AB-</option>
+                        <option value="Unkown ">Unknown</option>
+                    </select>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_phone " id="id_5 ">
+                <label class="form-label form-label-left " id="label_5 " for="Age "> Age </label>
+                <div id="cid_5 " class="form-input " data-layout="half ">
+                    <span class="form-sub-label-container " style="vertical-align:top ">
+            <input type="number" id="Age " name="Age" data-type="mask-number " class="mask-phone-number form-textbox validate[Fill Mask] " data-defaultvalue=" " autoComplete="section-input_5 tel-national " style="width:310px " data-masked="true
+                    " value=" " placeholder="in yrs " data-component="phone " aria-labelledby="label_5 " />
+            <label class="form-sub-label is-empty " for="Age " id="sublabel_5_masked " style="min-height:13px " aria-hidden="false ">  </label>
+          </span>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_phone " id="id_5 ">
+                <label class="form-label form-label-left " id="label_5 " for="Height "> Height </label>
+                <div id="cid_5 " class="form-input " data-layout="half ">
+                    <span class="form-sub-label-container " style="vertical-align:top ">
+            <input type="number" id="Height " name="Height" data-type="mask-number " class="mask-phone-number form-textbox validate[Fill Mask] " data-defaultvalue=" " autoComplete="section-input_5 tel-national " style="width:310px " data-masked="true
+                    " value=" " placeholder="in cms " data-component="phone " aria-labelledby="label_5 " />
+            <label class="form-sub-label is-empty " for="Height " id="sublabel_5_masked " style="min-height:13px " aria-hidden="false ">  </label>
+          </span>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_phone " id="id_5 ">
+                <label class="form-label form-label-left " id="label_5 " for="Weight "> Weight </label>
+                <div id="cid_5 " class="form-input " data-layout="half ">
+                    <span class="form-sub-label-container " style="vertical-align:top ">
+            <input type="number" id="Weight " name="Weight" data-type="mask-number " class="mask-phone-number form-textbox validate[Fill Mask] " data-defaultvalue=" " autoComplete="section-input_5 tel-national " style="width:310px " data-masked="true
+                    " value=" " placeholder="in kgs " data-component="phone " aria-labelledby="label_5 " />
+            <label class="form-sub-label is-empty " for="Weight " id="sublabel_5_masked " style="min-height:13px " aria-hidden="false ">  </label>
+          </span>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_phone " id="id_5 ">
+                <label class="form-label form-label-left " id="label_5 " for="password "> password </label>
+                <div id="cid_5 " class="form-input " data-layout="half ">
+                    <span class="form-sub-label-container " style="vertical-align:top ">
+            <input type="password" id="password" name="password" autoComplete="section-input_5 tel-national" class="mask-phone-number form-textbox validate[Fill Mask] " style="width:310px " data-masked="true
+                    " value="" placeholder="password " data-component="phone " aria-labelledby="label_5 " />
+            
+          </span>
+                </div>
+            </li>
+            <li class="form-line " data-type="control_button " id="id_2 ">
+                <div id="cid_2 " class="form-input-wide " data-layout="full ">
+                    <div data-align="auto " class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField ">
+                        <button id="submit" type="submit " class="form-submit-button submit-button jf-form-buttons jsTest-submitField " data-component="button " data-content=" ">
+              REGISTER
+            </button>
+                    </div>
+                </div>
+            </li>
+
+
+    </form>
+    {% endblock content %}
+</body>
+
+</html>

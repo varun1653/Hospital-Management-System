@@ -1,0 +1,82 @@
+{% extends "patient/template.html" %} {% block title %}
+<title>All Patient Details</title>
+{% endblock title %} {% block style %} {% endblock style %} {% block content %}
+
+<style>
+    .tb {
+        background-color: #0cb8b6;
+        /* color: white */
+    }
+    
+    th {
+        color: black;
+        font-weight: 500;
+    }
+    
+    .btn {
+        background: #0cb8b6;
+        color: #fff;
+    }
+</style>
+
+<h2 align="center">Search Patient</h2><br>
+<div class="container">
+    <div class="searchPatientsForm ">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="patientId">PATIENT ID</label>
+                <input class="form-control" type="int" id="patientId" name="patientId" placeholder="PatientId" />
+            </div>
+            <br>
+            <button type="submit" class="btn">search</button>
+            <br><br>
+            <div class="form-group">
+                <label for="patientName">PATIENT NAME</label>
+                <input class="form-control" type="text" id="patientName" name="patientName" placeholder="Patient Name" />
+            </div>
+            <br>
+            <button type="submit" class="btn">search</button>
+        </form>
+
+        <br />
+        <h2 align="center">All Registered Patients</h2>
+        <div align="center">
+            <div style="overflow-x:auto">
+                <table class="table table-striped">
+                    <tr class="tb">
+                        <th scope="col">PatientId</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Blood Group</th>
+                        <th scope="col">Email Address</th>
+                        <th scope="col">Address</th>
+                        <th scope="col"></th>
+                    </tr>
+                    {% for patient in patients %}
+                    <tr style="color: rgb(61, 61, 61); box-shadow: 30%;">
+                        <td>{{patient.PatientID}}</td>
+                        <td>{{patient.FirstName}}</td>
+                        <td>{{patient.LastName}}</td>
+                        <td>{{patient.Age}}</td>
+                        <td>{{patient.BloodGroup}}</td>
+                        <td>{{patient.EmailAddress}}</td>
+                        <td>{{patient.PermantAddress}}</td>
+                        <td>
+                            <form action="/receptionist/patientDetails/" method="post">
+                                {% csrf_token %}
+                                <button id="patientID" class="viewDetailsbutton btn" name="patientId" value={{patient.PatientID}}>
+              View Details
+            </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
