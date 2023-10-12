@@ -1,24 +1,18 @@
 # Hospital Management System
 Hospital Management System using MySQL,Django and Bootstrap
 
-## Prerequisites
-1. Install Django
-2. Install mathfilters (pip3 install django-mathfilters)
-3. Install flags (pip install django-flags)
-4. install mysql-client (pip install mysqlclient)
-
 ## Languages and Technologies used
 1. HTML5/ CSS3
 2. JavaScript (to create dynamically updating content)
 3. Bootstrap 5.0.1 (An HTML, CSS, and JS library)
-5.Django for the backend
+5. Django for the backend
 6. MySQL (An RDBMS tpip install mysqlclient.
 hat uses SQL)
 7. System File storage to store all the files
 
 ## Steps to run the project in your machine
 1. Download and install Django in your machine
-2. Install all the prerequisites
+2. Install all the required libraries
 3. Clone the project into your local storage
 4. Change the mysql password and username to yours in DATABASES of settings.py file in HMS folder inside the Code directory
 5. Add a database named HospitalManagementSystem by running ( CREATE DATABASE HospitalManagementSystem ) in your mysql workbench
