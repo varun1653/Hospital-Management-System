@@ -54,10 +54,6 @@ Receptionist can Register a new patient
 ![image](https://github.com/Sreekara-Madyastha/Hospital-Management-system/blob/master/photos/registration.png)
 Can Appoint Doctor to a patient
 ![image](https://github.com/Sreekara-Madyastha/Hospital-Management-system/blob/master/photos/patientappointment.png)
-Or can see all the Ward and Doctor details
-![image](https://github.com/Sreekara-Madyastha/Hospital-Management-system/blob/master/photos/wardanddoctor.png)
-Can also see all the patients registered in the hospital
-![image](https://github.com/Sreekara-Madyastha/Hospital-Management-system/blob/master/photos/seepatients.png)
 # Diagnostician
 Diagnostician can see all the appointments waiting for the diagnosis or already diagnosed. He/She can also add the diagnosis report and Diagnosis bill pdf aswell as the amount of bill for each Appointment who needs diagnosis as shown belo
 ![image](https://github.com/Sreekara-Madyastha/Hospital-Management-system/blob/master/photos/diagnosisinfopage.png)
